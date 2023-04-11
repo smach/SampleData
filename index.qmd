@@ -1,0 +1,17 @@
+---
+title: "Sample Data Dictionary"
+format: html
+editor: visual
+---
+
+```{r}
+#| echo: false
+
+
+table_data <- readRDS("data_dictionary_table_data.Rds")
+library(DT)
+datatable(table_data, escape = FALSE, filter = 'top', rownames = FALSE)
+
+
+```
+
