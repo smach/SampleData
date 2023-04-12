@@ -1,7 +1,9 @@
 ---
 title: "Sample Data Dictionary"
-format: html
-editor: visual
+format: 
+  html:
+    page-layout: full
+editor: source
 ---
 
 ```{r}
