@@ -11,8 +11,40 @@ editor: source
 
 
 table_data <- readRDS("data_dictionary_table_data.Rds")
-library(DT)
-datatable(table_data, escape = FALSE, filter = 'top', rownames = FALSE)
+# library(DT)
+# datatable(table_data, escape = FALSE, filter = 'top', rownames = FALSE)
+library(reactable)
 
+html <- function(x, inline = FALSE) {
+  container <- if (inline) htmltools::span else htmltools::div
+  container(dangerouslySetInnerHTML = list("__html" = x))
+}
+
+reactable(table_data[, c("Title","Description", "Source")], style = list(fontFamily = "Arial, sans-serif"),
+  searchable = TRUE,
+  filterable = TRUE,
+  pagination = FALSE,
+  compact = TRUE,
+  fullWidth = FALSE,
+  defaultExpanded = FALSE,
+   theme = reactablefmtr::cosmo(),
+  defaultColDef = colDef(vAlign = 'top',
+                         sortable = FALSE,
+                         width  = 400),
+  columns = list(
+    Title = colDef(html = TRUE),
+    Description = colDef(html = TRUE),
+    UsedBy = colDef(html = TRUE),
+    Columns = colDef(show = FALSE, searchable = TRUE)
+  ),
+  
+  details = function(index) {
+    if(table_data$Columns[index] != "") {
+      htmltools::tagList(
+        html(table_data$Columns[index])
+      )
+    }
+  }
+)
 
 ```
