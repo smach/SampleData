@@ -5,7 +5,7 @@ system('git add data_dictionary_table_data.Rds')
 system('git add www/*')
 system('git add docs/www/*')
 system('git add *')
-system('git commit -m "Added US metro commute times"')
+system('git commit -m "Updated to reactable table"')
 system('git push')
 
 # If I want to view the site

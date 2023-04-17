@@ -6,11 +6,17 @@ format:
 editor: source
 ---
 
+:::{.column-full}
+
 ```{r}
 #| echo: false
 
 
-table_data <- readRDS("data_dictionary_table_data.Rds")
+table_data <- readRDS("data_dictionary_table_data.Rds") |>
+    dplyr::mutate(Source = paste("Source:", Source),
+           Columns = paste("Columns:", Columns)
+           )
+# For a simple table:
 # library(DT)
 # datatable(table_data, escape = FALSE, filter = 'top', rownames = FALSE)
 library(reactable)
@@ -34,17 +40,19 @@ reactable(table_data[, c("Title","Description", "Source")], style = list(fontFam
   columns = list(
     Title = colDef(html = TRUE),
     Description = colDef(html = TRUE),
+    Source = colDef(html = TRUE, show = FALSE, searchable = TRUE),
     UsedBy = colDef(html = TRUE),
     Columns = colDef(show = FALSE, searchable = TRUE)
   ),
   
   details = function(index) {
-    if(table_data$Columns[index] != "") {
       htmltools::tagList(
-        html(table_data$Columns[index])
+        html(table_data$Columns[index]),
+        html(table_data$Source[index])
       )
-    }
   }
 )
 
 ```
+
+:::
