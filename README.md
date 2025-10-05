@@ -5,4 +5,6 @@ states.csv - 2020, 2010, and 2020 US Census state population data. Includes colu
 
 east_coast_states.csv - Subset of states.csv for use when making graphs that look best with fewer than 50 items.
 
+us_division_population_changes.csv - Populations changes of US states by Census Division.
+
 BOS_temperatures.csv - File of Boston daily max and minimum temperatures as well as additional columns for daily "feels like" max, min and avg temps; [climo_high_f] NCEI 1991-2020 Daily High Temperature Climatology [F]; [climo_low_f] NCEI 1991-2020 Daily Low Temperature Climatology [F]; and month, year, day columns. **This is not official National Weather Service data!!** It comes from [Iowa State University's Iowa Environmental Mesonet METAR database](https://mesonet.agron.iastate.edu/request/download.phtml?network=MA_ASOS). 
